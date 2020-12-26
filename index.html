@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tugas Javascirpt</title>
+    <style type="text/css">
+        #container {
+            display: flex;
+        }
+        
+        #left {
+            width: 50%;
+        }
+        
+        #right {
+            width: 50%;
+        }
+        
+        .divForm {
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>FORMULIR PENDAFTARAN MAHASISWA</h1>
+    <div id="container">
+        <div id="left">
+            <div class="divForm">
+                <label for="nama">Nama</label>
+                <input type="text" name="nama" id="nama">
+            </div>
+            <div class="divForm">
+                <label for="jk">jenis Kelamin : </label>
+                <input type="radio" name="jk" id="Pria" value="Pria"><label for="Pria">Pria</label>
+                <input type="radio" name="jk" id="Wanita" value="Wanita"><label for="Wanita">Wanita</label>
+            </div>
+            <div class="divForm">
+                <label for="prodi">Prodi :</label>
+                <select name="prodi" id="prodi">
+                    <option value="Teknik Informatika">Teknik Informatika</option>
+                    <option value="Sistem Informatika">Sistem Informatika</option>
+                </select>
+            </div>
+            <div class="divForm">
+                <label for="hoby">Hoby :</label>
+                <input type="checkbox" name="hoby" id="coding" value="Coding"><label for="coding">Coding</label>
+                <input type="checkbox" name="hoby" id="Jalan-Jalan" value="Jalan-Jalan"><label for="Jalan-Jalan">Jalan-Jalan</label>
+                <input type="checkbox" name="hoby" id="Makan" value="Makan"><label for="Makan">Makan</label>
+            </div>
+            <div class="divForm">
+                <button type="button" id="kirim">Kirim</button>
+            </div>
+        </div>
+        <div id="right">
+            <div id="result">
+                Nama : <br> Jenis Kelamin : <br> Nama : <br> Nama : <br>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById('kirim').addEventListener('click', kirim);
+
+        function kirim() {
+            let getHoby = document.querySelectorAll('input[name="hoby"]:checked');
+            var hoby = [];
+
+            for (i = 0; i < getHoby.length; i++) {
+                hoby.push(getHoby[i].value);
+            }
+
+            document.getElementById('result').innerHTML = `
+            Nama : ${document.getElementById('nama').value}<br>
+            Jenis Kelamin : ${document.querySelector('input[name="jk"]:checked').value}<br>
+            Nama : ${document.getElementById('prodi').value}<br>
+            Nama : ${hoby.join(", ")}<br>
+            `;
+        };
+    </script>
+</body>
+
+</html>
